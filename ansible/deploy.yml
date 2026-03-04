@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Pull Docker Image
+      shell: docker pull yourdockerhubusername/scientific-calculator
+
+    - name: Run Docker Container
+      shell: docker run -d -it yourdockerhubusername/scientific-calculator
