@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/shreysomani-2703/SPE-MINI-PROJECT.git'
-            }
-        }
-
         stage('Test') {
             steps {
                 sh 'python3 -m unittest test_calculator.py'
