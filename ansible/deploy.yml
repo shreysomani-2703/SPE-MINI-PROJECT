@@ -1,7 +1,8 @@
 - hosts: localhost
+  become: yes
   tasks:
     - name: Pull Docker Image
-      shell: docker pull yourdockerhubusername/scientific-calculator
+      command: docker pull shrey1112/spe-mini-project
 
     - name: Run Docker Container
-      shell: docker run -d -it yourdockerhubusername/scientific-calculator
+      command: docker run -d -p 5000:5000 shrey1112/spe-mini-project
