@@ -19,17 +19,24 @@ pipeline {
                 sh 'docker push shrey1112/spe-mini-project'
             }
         }
+
+        stage('Deploy with Ansible') {
+            steps {
+                sh 'ansible-playbook ansible/deploy.yml'
+            }
+        }
     }
+
     post {
-    success {
-        mail to: 'sdsomani27@gmail.com',
-        subject: "Build SUCCESS: ${env.JOB_NAME}",
-        body: "Build ${env.BUILD_NUMBER} completed successfully."
+        success {
+            mail to: 'sdsomani27@gmail.com',
+            subject: "Build SUCCESS: ${env.JOB_NAME}",
+            body: "Build ${env.BUILD_NUMBER} completed successfully."
+        }
+        failure {
+            mail to: 'sdsomani27@gmail.com',
+            subject: "Build FAILED: ${env.JOB_NAME}",
+            body: "Build ${env.BUILD_NUMBER} failed."
+        }
     }
-    failure {
-        mail to: 'sdsomani27@gmail.com',
-        subject: "Build FAILED: ${env.JOB_NAME}",
-        body: "Build ${env.BUILD_NUMBER} failed."
-    }
-}
 }
