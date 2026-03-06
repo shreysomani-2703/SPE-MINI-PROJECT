@@ -1,13 +1,13 @@
 - hosts: localhost
   tasks:
-    - name: Pull Docker Image
+    - name: Pull latest Docker image
       command: docker pull shrey1112/spe-mini-project
 
-    - name: Stop any running container of this image
-      shell: docker ps -q --filter ancestor=shrey1112/spe-mini-project | xargs -r docker stop
+    - name: Stop existing container
+      shell: docker stop spe-calculator || true
 
-    - name: Remove stopped container
-      shell: docker ps -aq --filter ancestor=shrey1112/spe-mini-project | xargs -r docker rm
+    - name: Remove existing container
+      shell: docker rm spe-calculator || true
 
-    - name: Run Docker Container
+    - name: Run new container
       command: docker run -d -p 5000:5000 --name spe-calculator shrey1112/spe-mini-project
