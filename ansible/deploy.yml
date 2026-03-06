@@ -1,13 +1,8 @@
 - hosts: localhost
+  become: yes
   tasks:
-    - name: Pull latest Docker image
+    - name: Pull Docker Image
       command: docker pull shrey1112/spe-mini-project
 
-    - name: Stop existing container
-      shell: docker stop spe-calculator || true
-
-    - name: Remove existing container
-      shell: docker rm spe-calculator || true
-
-    - name: Run new container
-      command: docker run -d -p 5000:5000 --name spe-calculator shrey1112/spe-mini-project
+    - name: Run Docker Container
+      command: docker run -d -p 5000:5000 shrey1112/spe-mini-project
