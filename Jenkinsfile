@@ -19,12 +19,6 @@ pipeline {
                 sh 'docker push shrey1112/spe-mini-project'
             }
         }
-
-        stage('Deploy with Ansible') {
-            steps {
-                sh 'ansible-playbook ansible/deploy.yml'
-            }
-        }
     }
 
     post {
