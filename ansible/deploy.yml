@@ -4,5 +4,8 @@
     - name: Pull Docker Image
       command: docker pull shrey1112/spe-mini-project
 
+    #- name: Run Docker Container
+     # command: docker run -d -p 5000:5000 shrey1112/spe-mini-project
+
     - name: Run Docker Container
-      command: docker run -d -p 5000:5000 shrey1112/spe-mini-project
+      command: docker run -dit --name spe-calculator shrey1112/spe-mini-project-cli 
