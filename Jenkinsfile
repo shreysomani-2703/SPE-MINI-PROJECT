@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Pull Docker'){
             steps{
-                sh 'ansible-playbook -i deploy.yml'
+                sh 'ansible-playbook -i ansible/deploy.yml'
             }
         }
     }
