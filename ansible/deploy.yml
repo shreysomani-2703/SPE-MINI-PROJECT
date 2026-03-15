@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: inventory
   become: yes
   tasks:
     - name: Pull Docker Image
