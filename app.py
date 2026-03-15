@@ -56,7 +56,7 @@ from calculator import power
 
 
 while True:
-    print("\n==== Scientific Calculator ====")
+    print("\n=== Scientific Calculator ===")
     print("1. Square Root")
     print("2. Factorial")
     print("3. Natural Log")
