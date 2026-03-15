@@ -11,4 +11,4 @@
       ignore_errors: yes
 
     - name: Run Docker Container
-      command: docker run -it --name spe-calculator shrey1112/spe-mini-project
+      command: docker run -dit --name spe-calculator shrey1112/spe-mini-project
