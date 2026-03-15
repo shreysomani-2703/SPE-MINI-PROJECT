@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Test') {
             steps {
                 sh 'python3 -m unittest test_calculator.py'
@@ -19,11 +20,13 @@ pipeline {
                 sh 'docker push shrey1112/spe-mini-project'
             }
         }
-        stage('Pull Docker'){
-            steps{
-                sh 'ansible-playbook -i ansible/inventory ansible/deploy.yml'
+
+        stage('Deploy with Ansible') {
+            steps {
+                sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml'
             }
         }
+
     }
 
     post {
@@ -32,6 +35,7 @@ pipeline {
             subject: "Build SUCCESS: ${env.JOB_NAME}",
             body: "Build ${env.BUILD_NUMBER} completed successfully."
         }
+
         failure {
             mail to: 'sdsomani27@gmail.com',
             subject: "Build FAILED: ${env.JOB_NAME}",
